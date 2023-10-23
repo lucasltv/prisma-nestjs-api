@@ -13,6 +13,8 @@ export class PrismaClientExceptionFilter extends BaseExceptionFilter {
     const response = ctx.getResponse<Response>();
     const message = exception.message.replace(/\n/g, '');
 
+    // TODO: https://nestjs-prisma.dev/docs/prisma-logging/
+
     switch (exception.code) {
       case 'P2002': {
         const status = HttpStatus.CONFLICT;
