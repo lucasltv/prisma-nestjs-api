@@ -8,15 +8,19 @@ export class ArticlesService {
   constructor(private prisma: PrismaService) {}
 
   create(createArticleDto: CreateArticleDto) {
-    return 'This action adds a new article';
+    return this.prisma.article.create({ data: createArticleDto });
   }
 
   findAll() {
     return this.prisma.article.findMany({ where: { published: true } });
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} article`;
+  findDrafts() {
+    return this.prisma.article.findMany({ where: { published: false } });
+  }
+
+  findOne(id: string) {
+    return this.prisma.article.findUnique({ where: { id } });
   }
 
   update(id: number, updateArticleDto: UpdateArticleDto) {

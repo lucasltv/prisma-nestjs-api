@@ -25,9 +25,14 @@ export class ArticlesController {
     return this.articlesService.findAll();
   }
 
+  @Get('drafts')
+  findDrafts() {
+    return this.articlesService.findDrafts();
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.articlesService.findOne(+id);
+    return this.articlesService.findOne(id);
   }
 
   @Patch(':id')
