@@ -24,4 +24,6 @@ async function bootstrap() {
 
   await app.listen(3000);
 }
-bootstrap();
+bootstrap()
+  .then((r) => console.log('App started'))
+  .catch((e) => console.error(e));
